@@ -1,0 +1,296 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* LunaTwin Color System - Soft, Calming Healthcare Palette */
+    --background: 240 20% 98%;
+    --foreground: 250 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 250 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 250 25% 15%;
+
+    /* Primary - Soft Lavender */
+    --primary: 270 40% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Calm Sky Blue */
+    --secondary: 210 60% 92%;
+    --secondary-foreground: 210 50% 35%;
+
+    /* Muted - Soft Gray with hint of lavender */
+    --muted: 250 20% 94%;
+    --muted-foreground: 250 15% 45%;
+
+    /* Accent - Soft Rose */
+    --accent: 340 50% 92%;
+    --accent-foreground: 340 50% 40%;
+
+    /* Destructive */
+    --destructive: 0 72% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Input */
+    --border: 250 20% 90%;
+    --input: 250 20% 90%;
+    --ring: 270 40% 65%;
+
+    --radius: 1rem;
+
+    /* Custom LunaTwin tokens */
+    --luna-lavender: 270 40% 65%;
+    --luna-lavender-light: 270 50% 95%;
+    --luna-sky: 210 60% 92%;
+    --luna-sky-dark: 210 50% 75%;
+    --luna-rose: 340 50% 85%;
+    --luna-rose-dark: 340 50% 65%;
+    --luna-mint: 160 40% 85%;
+    --luna-mint-dark: 160 40% 45%;
+    --luna-moon: 45 30% 95%;
+    --luna-warm: 30 50% 92%;
+
+    /* Health indicator colors */
+    --health-balanced: 145 55% 55%;
+    --health-mild: 45 80% 55%;
+    --health-stress: 25 85% 55%;
+    --health-critical: 0 70% 55%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(270 50% 97%) 0%, hsl(210 60% 96%) 50%, hsl(340 50% 97%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(270 45% 70%) 0%, hsl(300 40% 65%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+    --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+    --gradient-aura-balanced: radial-gradient(circle, hsla(145, 55%, 55%, 0.3) 0%, transparent 70%);
+    --gradient-aura-mild: radial-gradient(circle, hsla(45, 80%, 55%, 0.3) 0%, transparent 70%);
+    --gradient-aura-stress: radial-gradient(circle, hsla(25, 85%, 55%, 0.3) 0%, transparent 70%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px -2px rgba(120, 100, 150, 0.08);
+    --shadow-md: 0 8px 24px -8px rgba(120, 100, 150, 0.12);
+    --shadow-lg: 0 16px 48px -12px rgba(120, 100, 150, 0.18);
+    --shadow-glow: 0 0 40px -10px hsla(270, 40%, 65%, 0.3);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 250 25% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 250 25% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 250 25% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 270 45% 70%;
+    --primary-foreground: 250 25% 10%;
+
+    --secondary: 210 30% 20%;
+    --secondary-foreground: 210 60% 85%;
+
+    --muted: 250 20% 18%;
+    --muted-foreground: 250 15% 65%;
+
+    --accent: 340 40% 25%;
+    --accent-foreground: 340 50% 85%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 250 20% 20%;
+    --input: 250 20% 20%;
+    --ring: 270 45% 70%;
+
+    --sidebar-background: 250 25% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 270 45% 70%;
+    --sidebar-primary-foreground: 250 25% 10%;
+    --sidebar-accent: 250 20% 18%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 250 20% 20%;
+    --sidebar-ring: 270 45% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-xl border border-white/50 shadow-lg;
+    background: var(--gradient-glass);
+  }
+
+  .glass-card-strong {
+    @apply bg-white/90 backdrop-blur-2xl border border-white/60 shadow-xl;
+  }
+
+  /* Premium button styles */
+  .btn-primary-gradient {
+    background: var(--gradient-primary);
+    @apply text-white font-medium shadow-md transition-all duration-300;
+  }
+
+  .btn-primary-gradient:hover {
+    @apply shadow-lg scale-[1.02] brightness-105;
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Health indicator bars */
+  .health-bar {
+    @apply h-2 rounded-full bg-muted overflow-hidden;
+  }
+
+  .health-bar-fill {
+    @apply h-full rounded-full transition-all duration-700 ease-out;
+  }
+
+  /* Floating elements */
+  .float-gentle {
+    animation: floatGentle 4s ease-in-out infinite;
+  }
+
+  .float-slow {
+    animation: floatSlow 6s ease-in-out infinite;
+  }
+
+  /* Breathing animation for avatar */
+  .breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  /* Aura glow effects */
+  .aura-balanced {
+    box-shadow: 0 0 60px 20px hsla(145, 55%, 55%, 0.2);
+  }
+
+  .aura-mild {
+    box-shadow: 0 0 60px 20px hsla(45, 80%, 55%, 0.2);
+  }
+
+  .aura-stress {
+    box-shadow: 0 0 60px 20px hsla(25, 85%, 55%, 0.2);
+  }
+
+  /* Page transition wrapper */
+  .page-transition {
+    @apply w-full min-h-screen;
+  }
+
+  /* Smooth scroll container */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-muted rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+}
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Hero background */
+  .bg-hero {
+    background: var(--gradient-hero);
+  }
+
+  /* Subtle pattern overlay */
+  .pattern-dots {
+    background-image: radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.05) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+}
+
+/* Keyframe animations */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
